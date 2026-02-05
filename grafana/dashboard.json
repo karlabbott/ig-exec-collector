@@ -15,6 +15,7 @@
         "targets": [
           {
             "refId": "A",
+            "queryType": "Azure Log Analytics",
             "azureLogAnalytics": {
               "query": "InspektorGadgetExec_CL\n| summarize ExecCount=count() by bin(TimeGenerated, 1m)\n| order by TimeGenerated asc",
               "resources": ["${LA_WORKSPACE_RESOURCE_ID}"],
@@ -40,6 +41,7 @@
         "targets": [
           {
             "refId": "A",
+            "queryType": "Azure Log Analytics",
             "azureLogAnalytics": {
               "query": "InspektorGadgetExec_CL\n| where TimeGenerated > ago(1h)\n| summarize Count=count() by Comm_s\n| top 15 by Count\n| order by Count desc",
               "resources": ["${LA_WORKSPACE_RESOURCE_ID}"],
@@ -57,6 +59,7 @@
         "targets": [
           {
             "refId": "A",
+            "queryType": "Azure Log Analytics",
             "azureLogAnalytics": {
               "query": "InspektorGadgetExec_CL\n| where TimeGenerated > ago(1h)\n| summarize Count=count() by User_s\n| top 10 by Count",
               "resources": ["${LA_WORKSPACE_RESOURCE_ID}"],
@@ -75,6 +78,7 @@
         "targets": [
           {
             "refId": "A",
+            "queryType": "Azure Log Analytics",
             "azureLogAnalytics": {
               "query": "InspektorGadgetExec_CL\n| where TimeGenerated > ago(1h)\n| summarize TotalExecs=count()",
               "resources": ["${LA_WORKSPACE_RESOURCE_ID}"],
@@ -94,6 +98,7 @@
         "targets": [
           {
             "refId": "A",
+            "queryType": "Azure Log Analytics",
             "azureLogAnalytics": {
               "query": "InspektorGadgetExec_CL\n| where TimeGenerated > ago(1h)\n| summarize UniqueProcesses=dcount(Comm_s)",
               "resources": ["${LA_WORKSPACE_RESOURCE_ID}"],
@@ -113,6 +118,7 @@
         "targets": [
           {
             "refId": "A",
+            "queryType": "Azure Log Analytics",
             "azureLogAnalytics": {
               "query": "InspektorGadgetExec_CL\n| where TimeGenerated > ago(1h)\n| summarize ExecCount=count() by bin(TimeGenerated, 1m)\n| summarize AvgPerMinute=avg(ExecCount)",
               "resources": ["${LA_WORKSPACE_RESOURCE_ID}"],
